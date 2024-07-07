@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sneaker_shop/models/shoe_model.dart';
+import 'package:sneaker_shop/providers/cart_provider.dart';
 
 class ShoeTile extends StatelessWidget {
-  final String imagePath;
-  final String name;
-  final String description;
-  final double price;
+  final ShoeModel shoe;
 
-  const ShoeTile({super.key, required this.imagePath, required this.name, required this.description, required this.price});
+  const ShoeTile({super.key, required this.shoe});
+
+  void addShoeToCart(context) {
+    Provider.of<CartProvider>(context, listen: false).addToCart(shoe);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Successfully added 🎉'),
+        content: Text('${shoe.name} has been added to your cart.'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +46,21 @@ class ShoeTile extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             Image.asset(
-              imagePath,
+              shoe.imagePath,
               width: 250,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(description, style: TextStyle(color: theme.secondary)),
+                Text(shoe.description, style: TextStyle(color: theme.secondary)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(name, style: TextStyle(color: theme.inversePrimary, fontSize: 25, fontWeight: FontWeight.bold)),
-                        Text(price.toString(), style: TextStyle(color: theme.primary, fontSize: 17, fontWeight: FontWeight.bold)),
+                        Text(shoe.name, style: TextStyle(color: theme.inversePrimary, fontSize: 25, fontWeight: FontWeight.bold)),
+                        Text(shoe.price.toString(), style: TextStyle(color: theme.primary, fontSize: 17, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -55,7 +73,7 @@ class ShoeTile extends StatelessWidget {
                       ),
                       child: IconButton(
                         icon: Icon(Icons.add, color: theme.inverseSurface),
-                        onPressed: () {},
+                        onPressed: () => addShoeToCart(context),
                         color: theme.primary,
                       ),
                     ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:sneaker_shop/intro_page.dart';
+import 'package:sneaker_shop/providers/cart_provider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -18,22 +20,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Sneaker Shop',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.grey[600]!,
-          brightness: Brightness.light,
-          primary: Colors.grey[600]!,
-          secondary: Colors.grey[500],
-          surface: Colors.grey[300]!,
-          inverseSurface: Colors.white,
-          inversePrimary: Colors.grey[900],
+    return ChangeNotifierProvider(
+      create: (context) => CartProvider(),
+      builder: (context, child) => MaterialApp(
+        title: 'Sneaker Shop',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.grey[600]!,
+            brightness: Brightness.light,
+            primary: Colors.grey[600]!,
+            secondary: Colors.grey[500],
+            surface: Colors.grey[300]!,
+            inverseSurface: Colors.white,
+            inversePrimary: Colors.grey[900],
+          ),
         ),
+        home: const IntroPage(),
       ),
-      home: const IntroPage(),
     );
   }
 }
