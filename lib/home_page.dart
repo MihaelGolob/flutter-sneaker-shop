@@ -66,12 +66,12 @@ class _HomePageState extends State<HomePage> {
               ListTile(
                 leading: Icon(Icons.settings_outlined, color: theme.inverseSurface),
                 title: Text('Settings', style: TextStyle(color: theme.inverseSurface)),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage())),
               ),
               const Spacer(),
               ListTile(
                 leading: Icon(Icons.logout, color: theme.inverseSurface),
                 title: Text('Logout', style: TextStyle(color: theme.inverseSurface)),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage())),
               ),
             ],
           ),

@@ -37,6 +37,18 @@ class MyApp extends StatelessWidget {
             inversePrimary: Colors.grey[900],
           ),
         ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.grey[900]!,
+            brightness: Brightness.dark,
+            primary: Colors.grey[200]!,
+            secondary: Colors.grey[300],
+            surface: Colors.grey[900]!,
+            inverseSurface: Colors.grey[800],
+            inversePrimary: Colors.grey[200],
+          ),
+        ),
         home: const IntroPage(),
       ),
     );

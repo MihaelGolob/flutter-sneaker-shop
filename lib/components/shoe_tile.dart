@@ -16,6 +16,7 @@ class ShoeTile extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: const Text('Successfully added 🎉'),
         content: Text('${shoe.name} has been added to your cart.'),
+        backgroundColor: Theme.of(context).colorScheme.surface,
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
