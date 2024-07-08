@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sneaker_shop/providers/theme_provider.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -14,11 +16,9 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
 
-    void _changeTheme(int value) {
+    void changeTheme(int value) {
       // Change the theme based on the value
-      setState(() {
-        _themeValue = value;
-      });
+      Provider.of<ThemeProvider>(context, listen: false).themeValue = value;
     }
 
     return Scaffold(
@@ -43,12 +43,24 @@ class _SettingsPageState extends State<SettingsPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Light"),
+                    const Text("System Default"),
                     Radio(
                       value: 0,
-                      groupValue: _themeValue,
+                      groupValue: Provider.of<ThemeProvider>(context).themeValue,
                       activeColor: theme.inversePrimary,
-                      onChanged: (value) => _changeTheme(value!),
+                      onChanged: (value) => changeTheme(value!),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text("Light"),
+                    Radio(
+                      value: 1,
+                      groupValue: Provider.of<ThemeProvider>(context).themeValue,
+                      activeColor: theme.inversePrimary,
+                      onChanged: (value) => changeTheme(value!),
                     ),
                   ],
                 ),
@@ -57,22 +69,10 @@ class _SettingsPageState extends State<SettingsPage> {
                   children: [
                     const Text("Dark"),
                     Radio(
-                      value: 1,
-                      groupValue: _themeValue,
-                      activeColor: theme.inversePrimary,
-                      onChanged: (value) => _changeTheme(value!),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("System Default"),
-                    Radio(
                       value: 2,
-                      groupValue: _themeValue,
+                      groupValue: Provider.of<ThemeProvider>(context).themeValue,
                       activeColor: theme.inversePrimary,
-                      onChanged: (value) => _changeTheme(value!),
+                      onChanged: (value) => changeTheme(value!),
                     ),
                   ],
                 ),
