@@ -14,68 +14,80 @@ class ShopPage extends StatelessWidget {
       const ShoeModel(
         imagePath: 'assets/airmax.png',
         name: 'Air Max',
-        description: 'With the latest in Nike Air technology, the Nike Air Max 270 delivers unrivaled comfort and style.',
+        description:
+            'With the latest in Nike Air technology, the Nike Air Max 270 delivers unrivaled comfort and style.',
         price: 169.99,
       ),
       const ShoeModel(
         imagePath: 'assets/airforce1.png',
         name: 'Air Force 1',
-        description: 'The Nike Air Force 1 is a classic basketball shoe that has been updated with modern details.',
+        description:
+            'The Nike Air Force 1 is a classic basketball shoe that has been updated with modern details.',
         price: 189.99,
       ),
       const ShoeModel(
         imagePath: 'assets/airforce1low.png',
         name: 'Air Force 1 Low',
-        description: 'The Nike Air Force 1 Low is a classic basketball shoe that has been updated with modern details.',
+        description:
+            'The Nike Air Force 1 Low is a classic basketball shoe that has been updated with modern details.',
         price: 199.99,
       ),
       const ShoeModel(
         imagePath: 'assets/force58.png',
         name: 'Force 58',
-        description: 'The Nike Force 58 is a classic basketball shoe that has been updated with modern details.',
+        description:
+            'The Nike Force 58 is a classic basketball shoe that has been updated with modern details.',
         price: 129.99,
       ),
       const ShoeModel(
         imagePath: 'assets/revolution7.png',
         name: 'Revolution 7',
-        description: 'An affordable running shoe that provides comfort and support for all types of runners.',
+        description:
+            'An affordable running shoe that provides comfort and support for all types of runners.',
         price: 79.99,
       ),
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          TextBox(controller: TextEditingController()),
-          const SizedBox(height: 20),
-          // inspirational quote
-          Text(
-            'the only way to do great work is to love what you do',
-            style: TextStyle(color: theme.secondary),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                'Hot picks 🔥',
-                style: TextStyle(
-                  color: theme.primary,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Column(
+              children: [
+                TextBox(controller: TextEditingController()),
+                const SizedBox(height: 20),
+                // inspirational quote
+                Text(
+                  'the only way to do great work is to love what you do',
+                  style: TextStyle(color: theme.secondary),
                 ),
-              ),
-              Text(
-                'See all',
-                style: TextStyle(
-                  color: theme.secondary,
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Hot picks 🔥',
+                      style: TextStyle(
+                        color: theme.primary,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'See all',
+                      style: TextStyle(
+                        color: theme.secondary,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 25),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

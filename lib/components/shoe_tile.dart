@@ -6,7 +6,12 @@ class ShoeTile extends StatelessWidget {
   final String description;
   final double price;
 
-  const ShoeTile({super.key, required this.imagePath, required this.name, required this.description, required this.price});
+  const ShoeTile(
+      {super.key,
+      required this.imagePath,
+      required this.name,
+      required this.description,
+      required this.price});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class ShoeTile extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(0),
-      margin: const EdgeInsets.only(right: 30),
+      margin: const EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(
         color: theme.inverseSurface,
         borderRadius: BorderRadius.circular(20),
@@ -41,8 +46,16 @@ class ShoeTile extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(name, style: TextStyle(color: theme.inversePrimary, fontSize: 25, fontWeight: FontWeight.bold)),
-                        Text(price.toString(), style: TextStyle(color: theme.primary, fontSize: 17, fontWeight: FontWeight.bold)),
+                        Text(name,
+                            style: TextStyle(
+                                color: theme.inversePrimary,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold)),
+                        Text(price.toString(),
+                            style: TextStyle(
+                                color: theme.primary,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold)),
                         const SizedBox(height: 10),
                       ],
                     ),
@@ -51,7 +64,9 @@ class ShoeTile extends StatelessWidget {
                       margin: const EdgeInsets.all(0),
                       decoration: BoxDecoration(
                         color: theme.inversePrimary,
-                        borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), bottomRight: Radius.circular(20)),
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20)),
                       ),
                       child: IconButton(
                         icon: Icon(Icons.add, color: theme.inverseSurface),
