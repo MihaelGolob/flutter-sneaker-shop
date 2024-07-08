@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sneaker_shop/cart_page.dart';
 import 'package:sneaker_shop/components/bottom_nav_bar.dart';
+import 'package:sneaker_shop/settings_page.dart';
 import 'package:sneaker_shop/shop_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -62,10 +63,15 @@ class _HomePageState extends State<HomePage> {
                 leading: Icon(Icons.person_outline, color: theme.inverseSurface),
                 title: Text('Profile', style: TextStyle(color: theme.inverseSurface)),
               ),
+              ListTile(
+                leading: Icon(Icons.settings_outlined, color: theme.inverseSurface),
+                title: Text('Settings', style: TextStyle(color: theme.inverseSurface)),
+              ),
               const Spacer(),
               ListTile(
                 leading: Icon(Icons.logout, color: theme.inverseSurface),
                 title: Text('Logout', style: TextStyle(color: theme.inverseSurface)),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SettingsPage())),
               ),
             ],
           ),
