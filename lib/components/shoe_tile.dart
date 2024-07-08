@@ -32,7 +32,7 @@ class ShoeTile extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(0),
-      margin: const EdgeInsets.only(right: 30),
+      margin: const EdgeInsets.only(left: 15, right: 15),
       decoration: BoxDecoration(
         color: theme.inverseSurface,
         borderRadius: BorderRadius.circular(20),
